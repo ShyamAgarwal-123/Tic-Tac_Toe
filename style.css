@@ -7,13 +7,12 @@ body{
     background-color: #9bc1bc;
     font-family: Roboto,Arial;
 }
-.Game-title{
-    height: 20vh;
-    text-align: center;
+h1{
+    font-size: 5vmin;
 }
 .container{
     display: flex;
-    height: 80vh;
+    height: 90vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
