@@ -51,6 +51,7 @@ playButtons.forEach((box)=>{
                 box.disabled = true;
             })
             para.innerText = "OPPS GAME IS OVER AND IT'S A DRAW!";
+            clearInterval(timer);
         }
         
     })
