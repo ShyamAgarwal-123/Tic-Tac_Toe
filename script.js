@@ -1,6 +1,6 @@
 alert('!!!Instructions!!!!!');
 alert('1.Type Your Name In input Pop-up Boxes And Accordingly you will get X or O'+"\n"+
-    '2.Each Player Will get 10 sec to Choose a place to fill'+"\n"+
+    '2.Each Player Will get 5 sec to Choose a place to fill'+"\n"+
     '3.If not Choosen then the turn of the Current player will be Skiped'+"\n"+
    '4.After a Successful Entry The player can\'t modify their Entry')
 alert('!!All the Best!!');
@@ -114,7 +114,7 @@ newGameButton.addEventListener("click",() =>{
     document.location.reload();
 })
 // CountDown Function
-let time = 10;
+let time = 5;
 const countDown = document.querySelector('#count-down p');
 let timer = setInterval(updateTime,1000);
 function updateTime(){
@@ -122,15 +122,15 @@ function updateTime(){
     if (time>=0) {
         countDown.textContent = time;
         time--;
-        if(time<0){
-            setTime();
-        } 
+    }
+    else{
+        setTime();
     }
 }
 // reset the timer buy clearing the previous setInterval function and Creating a new one
 function resetTimer() {
     clearInterval(timer);
-    time = 10;
+    time = 5;
     countDown.textContent = time;
     timer = setInterval(updateTime, 1000);
 }
@@ -144,6 +144,6 @@ function setTime(){
             turnOfX = !(turnOfX);
         }
     }
-    time = 10;
+    time = 5;
     countDown.textContent = time;
 }
