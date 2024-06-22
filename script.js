@@ -115,7 +115,7 @@ newGameButton.addEventListener("click",() =>{
 })
 // CountDown Function
 let time = 10;
-const countDown = document.getElementById('count-down');
+const countDown = document.querySelector('#count-down p');
 let timer = setInterval(updateTime,1000);
 function updateTime(){
 
