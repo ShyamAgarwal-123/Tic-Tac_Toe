@@ -7,14 +7,16 @@ alert('!!All the Best!!');
 
 let X = prompt("Name Of player X");
 let O = prompt("Name of Player O");
+let a = 0;
 let b = 0;
+let c = 0;
 if(X == null || X =="" || O == null || O == ""){
     X ="playerX";
     O = "playerO";
 }
 let newGameButton = document.querySelector("#New-game")
 let playButtons = document.querySelectorAll(".box");
-let para = document.querySelector("p");
+let para = document.querySelector(".container .info p");
 let restartButton = document.querySelector("#Restart-button");
 let turnOfX = true; // true--> X fasle---> O
 let gameNotOver = true;
@@ -40,33 +42,33 @@ playButtons.forEach((box)=>{
             box.disabled = true;
         }
         checkPattern();
-        if(gameNotOver){
-            if(turnOfX){para.innerText = `Its ${O} Turn Now!`}
-            else{para.innerText = `Its ${X} Turn Now!`}
-            turnOfX = !(turnOfX);
-            resetTimer()
-        }
-        else if(!gameNotOver && b === 9 ){
+        if(!gameNotOver && b === 9 && c === 0 ){
             playButtons.forEach((box)=>{
                 box.disabled = true;
             })
             para.innerText = "OPPS GAME IS OVER AND IT'S A DRAW!";
             clearInterval(timer);
         }
+        else if(gameNotOver){
+            if(turnOfX){para.innerText = `Its ${O} Turn Now!`}
+            else{para.innerText = `Its ${X} Turn Now!`}
+            turnOfX = !(turnOfX);
+            resetTimer();
+        }
         
     })
 
 })
 const checkPattern = ()=>{
-    let a = 0;
+    c = 0;
+    a =0;
     playButtons.forEach((box)=>{
         if(box.innerText !== ""){ a++ };
-        if(a === 9){
-             gameNotOver = !gameNotOver;
-             b = 9;
-
-        }
     })
+    if(a === 9){
+        gameNotOver = !gameNotOver;
+        b = 9;
+    }
     for(position of winPosition){
         let text1 = playButtons[position[0]].innerText;
         let text2 = playButtons[position[1]].innerText;
@@ -74,23 +76,23 @@ const checkPattern = ()=>{
         if (text1 !== "" && text2 !== "" && text3 !== ""){
             if(text1 === text2  && text2 === text3){
                 if(turnOfX){
-                    console.log(`${X} IS The Winner!`);
                     para.innerText = `${X} Is The WINNER!`;
                     playButtons.forEach((box)=>{
                         box.disabled = true;
+                        c = 1;
                     })
                 }
                 else{
-                    console.log(`${O} IS The Winner!`);
                     para.innerText = `${O} Is The WINNER!`;
                     playButtons.forEach((box)=>{
                         box.disabled = true;
+                        c = 1;
                     })
                 }
-                gameNotOver = !gameNotOver;
-                if(!gameNotOver){
-                    clearInterval(timer)
+                if(gameNotOver){
+                    gameNotOver = !gameNotOver;
                 }
+                clearInterval(timer);
             }
         }   
     }
@@ -123,9 +125,6 @@ function updateTime(){
         if(time<0){
             setTime();
         } 
-    }
-    else{
-        setTime()
     }
 }
 // reset the timer buy clearing the previous setInterval function and Creating a new one
