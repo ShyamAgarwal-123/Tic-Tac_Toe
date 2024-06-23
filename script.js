@@ -76,6 +76,9 @@ const checkPattern = ()=>{
         if (text1 !== "" && text2 !== "" && text3 !== ""){
             if(text1 === text2  && text2 === text3){
                 if(turnOfX){
+                    playButtons[position[0]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">X</p>';
+                    playButtons[position[1]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">X</p>';
+                    playButtons[position[2]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">X</p>';
                     para.innerText = `${X} Is The WINNER!`;
                     playButtons.forEach((box)=>{
                         box.disabled = true;
@@ -83,6 +86,9 @@ const checkPattern = ()=>{
                     })
                 }
                 else{
+                    playButtons[position[0]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">O</p>';
+                    playButtons[position[1]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">O</p>';
+                    playButtons[position[2]].innerHTML ='<p style="color: #ff2b0f;font-size: 10vmin; font-weight:bold;">O</p>';
                     para.innerText = `${O} Is The WINNER!`;
                     playButtons.forEach((box)=>{
                         box.disabled = true;
